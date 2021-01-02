@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All posts</title>
+</head>
+<body>
+    <h1>All Posts</h1>
+    <form action="/posts/{{user_id}}", method="POST">
+    <div>
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="content">Content: </label>
+        <input type="text" name="content" id="content">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+    </form>
+
+    <hr>
+
+    {% for post in posts %}
+        <p>Title: {{post.title}}</p>
+        <p>Content: {{post.content}}</p>
+        <p>Author: {{post.author}}</p>
+        <p>Date created: {{post.date}}</p>
+        <p>ID: {{post.id}}</p>
+
+        <div>
+            <a href="/edit/{{post.id}}"><button>Edit</button></a>
+            <a href="/delete/{{post.id}}"><button>Delete</button></a>
+        </div>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>
